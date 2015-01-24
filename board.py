@@ -1,5 +1,9 @@
+"""8-puzzle board object for HW 1 (8-puzzle A* search)."""
 
 from copy import deepcopy
+
+__author__ = "Jackson Spell"
+__email__ = "jaspell@davidson.edu"
 
 class Board:
 	"""
