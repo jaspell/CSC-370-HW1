@@ -122,3 +122,39 @@ class Board:
 
 		if self.j != 2:
 			output.append(self.right())
+
+	def __str__(self):
+		"""
+		Return a readable representation of a puzzle board.
+
+		Parameters:
+			none
+
+		Returns:
+			string - human-readable representation of the board
+		"""
+
+		output = "+"
+
+		for col in self.board[0]:
+			output += "-"
+
+		output += "+\n"
+
+		for row in self.board:
+			output += "|" 
+			for square in row:
+				if square == 0:
+					output += " "
+				else:
+					output += str(square)
+			output += "|\n"
+
+		output += "+"
+
+		for col in self.board[0]:
+			output += "-"
+
+		output += "+"	
+
+		return output	
