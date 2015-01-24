@@ -9,7 +9,8 @@ __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
 def main():
 
-	
+	goal = board.Board()
+	print goal
 
 if __name__ == "__main__":
 	main()
