@@ -5,7 +5,32 @@ import board
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
-def main():
 
+def h1(Board b):
+	"""
+	Heuristic function: returns number of misplaced tiles.
+	"""
+	
+	misplaced = 0;
+	
+	for i in range(0, 3):
+		for j in range(0, 3):
+			if(b.board[i][j] != 3*i + j):
+				misplaced = misplaced + 1
+	
+	return misplaced
 
-def h1():
+def h2(Board b):
+	"""
+	Heuristic function: returns sum of distances from goal positions.
+	"""
+	
+	distance = 0;
+	
+	for i in range(0, 3):
+		for j in range(0, 3):
+			distance = distance + abs(i - b.board[i][j] / 3)
+			distance = distance + abs(j - b.board[i][j] % 3)
+	
+	return distance
+
