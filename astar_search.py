@@ -5,6 +5,24 @@ import board
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
+def a_star(b):
+    """
+    Runs A* algorithm to find optimal path from current to goal state.
+    
+    Parameters:
+        starting Board state
+    
+    Returns:
+        2-tuple containing two 3-tuples:
+            ((h1 nodes generated, h2 nodes generated, h3 nodes generated),
+             (h1 effective branching factor, h2 effective branching factor,
+              h3 effective branching factor))
+    """
+    
+    open_set = [b] #priority queue of Boards
+    closed_set = [] #
+    
+    
 
 def h1(b):
 	"""
@@ -46,3 +64,13 @@ def h2(b):
 	
 	return distance
 
+def h3(b):
+	"""
+	Heuristic function: TBA
+	
+	Parameters:
+		Board to analyze.
+		
+	Returns:
+		# of misplaced tiles.
+	"""
