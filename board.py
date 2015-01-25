@@ -2,8 +2,8 @@
 
 from copy import deepcopy
 
-__author__ = "Jackson Spell"
-__email__ = "jaspell@davidson.edu"
+__author__ = "Jackson Spell and Ben Wiley"
+__email__ = "jaspell@davidson.edu, bewiley@davidson.edu"
 
 class Board:
 	"""
@@ -18,6 +18,74 @@ class Board:
 		self.i = 0
 		self.j = 0
 
+	def swap_up(self):
+		"""
+		Swaps the empty square and the square above.
+		
+		Parameters:
+			none
+		
+		Returns:
+			nothing
+		"""
+		
+		if self.i != 0:
+			
+			self.board[self.i][self.j] = self.board[self.i-1][self.j]
+			self.board[self.i-1][self.j] = 0
+			self.i = self.i - 1
+
+	def swap_down(self):
+		"""
+		Swaps the empty square and the square below.
+		
+		Parameters:
+			none
+		
+		Returns:
+			nothing
+		"""
+
+		if self.i != 2:
+		
+			self.board[self.i][self.j] = self.board[self.i+1][self.j]
+			self.board[self.i+1][self.j] = 0
+			self.i = self.i + 1
+
+	def swap_left(self):
+		"""
+		Swaps the empty square and the square to the left.
+		
+		Parameters:
+			none
+		
+		Returns:
+			nothing
+		"""
+
+		if self.j != 0:
+		
+			self.board[self.i][self.j] = self.board[self.i][self.j-1]
+			self.board[self.i][self.j-1] = 0
+			self.j = self.j - 1
+
+	def swap_right(self):
+		"""
+		Swaps the empty square and the square to the right.
+		
+		Parameters:
+			none
+		
+		Returns:
+			nothing
+		"""
+
+		if self.j != 2:
+		
+			self.board[self.i][self.j] = self.board[self.i][self.j+1]
+			self.board[self.i][self.j+1] = 0
+			self.j = self.j + 1
+
 	def up(self):
 		"""
 		Returns new Board state; empty square and square above are swapped.
@@ -31,11 +99,8 @@ class Board:
 
 		if self.i != 0:
 
-			temp_board = deepcopy(self.board)
-
-			temp_board[temp_board.i][temp_board.j] = temp_board[temp_board.i-1][temp_board.j]
-			temp_board[temp_board.i-1][temp_board.j] = 0
-			temp_board.i = temp_board.i - 1
+			temp_board = deepcopy(self)
+			temp_board.swap_up()
 
 			return temp_board
 
@@ -52,14 +117,11 @@ class Board:
 
 		if self.i != 2:
 
-			temp_board = deepcopy(self.board)
-
-			temp_board[temp_board.i][temp_board.j] = temp_board[temp_board.i+1][temp_board.j]
-			temp_board[temp_board.i+1][temp_board.j] = 0
-			temp_board.i = temp_board.i + 1
+			temp_board = deepcopy(self)
+			temp_board.swap_down()
 
 			return temp_board
-
+	
 	def left(self):
 		"""
 		Returns new Board state; empty square and square to left are swapped.
@@ -74,11 +136,8 @@ class Board:
 		if self.j != 0:
 
 			temp_board = deepcopy(self.board)
-
-			temp_board[temp_board.i][temp_board.j] = temp_board[temp_board.i][temp_board.j-1]
-			temp_board[temp_board.i][temp_board.j-1] = 0
-			temp_board.j = temp_board.j - 1
-
+			temp_board.swap_left()
+			
 			return temp_board
 
 	def right(self):
@@ -95,11 +154,8 @@ class Board:
 		if self.j != 2:
 
 			temp_board = deepcopy(self.board)
-
-			temp_board[temp_board.i][temp_board.j] = temp_board[temp_board.i][temp_board.j+1]
-			temp_board[temp_board.i][temp_board.j+1] = 0
-			temp_board.j = temp_board.j + 1
-
+			temp_board.swap_right()
+			
 			return temp_board
 
 	def moves(self):
