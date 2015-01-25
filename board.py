@@ -20,7 +20,7 @@ class Board:
 
 	def up(self):
 		"""
-		Move the empty square up.
+		Returns new Board state; empty square and square above are swapped.
 
 		Parameters:
 			none
@@ -41,7 +41,7 @@ class Board:
 
 	def down(self):
 		"""
-		Move the empty square down.
+		Returns new Board state; empty square and square below are swapped.
 
 		Parameters:
 			none
@@ -62,7 +62,7 @@ class Board:
 
 	def left(self):
 		"""
-		Move the empty square left.
+		Returns new Board state; empty square and square to left are swapped.
 
 		Parameters:
 			none
@@ -83,7 +83,7 @@ class Board:
 
 	def right(self):
 		"""
-		Move the empty square right.
+		Returns new Board state; empty square and square to right are swapped.
 
 		Parameters:
 			none
@@ -126,6 +126,8 @@ class Board:
 
 		if self.j != 2:
 			output.append(self.right())
+			
+		return output
 
 	def __str__(self):
 		"""
