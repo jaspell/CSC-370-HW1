@@ -10,7 +10,7 @@ def a_star(b):
     Runs A* algorithm to find optimal path from current to goal state.
     
     Parameters:
-        starting Board state
+        b - Board - starting board state
     
     Returns:
         2-tuple containing two 3-tuples:
@@ -29,10 +29,10 @@ def h1(b):
 	Heuristic function: returns number of misplaced tiles.
 	
 	Parameters:
-		Board to analyze.
+		b - Board - board to analyze
 		
 	Returns:
-		# of misplaced tiles.
+		int - # of misplaced tiles
 	"""
 	
 	misplaced = 0;
@@ -49,10 +49,10 @@ def h2(b):
 	Heuristic function: returns sum of distances from goal positions.
 	
 	Parameters:
-		Board to analyze.
+		b - Board - board to analyze
 		
 	Returns:
-		# of misplaced tiles.
+		int - sum of distances from goal positions
 	"""
 	
 	distance = 0;
@@ -69,8 +69,8 @@ def h3(b):
 	Heuristic function: TBA
 	
 	Parameters:
-		Board to analyze.
+		b - Board - board to analyze
 		
 	Returns:
-		# of misplaced tiles.
+		int - 
 	"""
