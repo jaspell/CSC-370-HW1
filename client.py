@@ -12,6 +12,15 @@ def main():
 
 	goal = board.Board()
 	print goal
+	
+	goal.swap_right()
+	print goal
+
+	goal.swap_down()
+	print goal
+
+	for b in goal.moves():
+		print b
 
 if __name__ == "__main__":
 	main()

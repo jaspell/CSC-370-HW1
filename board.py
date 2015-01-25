@@ -12,11 +12,26 @@ class Board:
 
 	goal_state = [[0, 1, 2], [3, 4, 5], [6, 7, 8]]
 
-	def __init__(self):
+	def __init__(self, original=None):
+		"""
+		Board Constructor.
 
-		self.board = Board.goal_state
-		self.i = 0
-		self.j = 0
+		Parameters:
+			original - Board - board to copy
+
+		Returns:
+			instantiated copy of the original board
+		"""
+
+		if original is None:
+			self.board = deepcopy(Board.goal_state)
+			self.i = 0
+			self.j = 0
+
+		else:
+			self.board = deepcopy(original.board)
+			self.i = original.i
+			self.j = original.j
 
 	def swap_up(self):
 		"""
@@ -99,7 +114,7 @@ class Board:
 
 		if self.i != 0:
 
-			temp_board = deepcopy(self)
+			temp_board = Board(self)
 			temp_board.swap_up()
 
 			return temp_board
@@ -117,7 +132,7 @@ class Board:
 
 		if self.i != 2:
 
-			temp_board = deepcopy(self)
+			temp_board = Board(self)
 			temp_board.swap_down()
 
 			return temp_board
@@ -135,7 +150,7 @@ class Board:
 
 		if self.j != 0:
 
-			temp_board = deepcopy(self.board)
+			temp_board = Board(self)
 			temp_board.swap_left()
 			
 			return temp_board
@@ -153,7 +168,7 @@ class Board:
 
 		if self.j != 2:
 
-			temp_board = deepcopy(self.board)
+			temp_board = Board(self)
 			temp_board.swap_right()
 			
 			return temp_board
