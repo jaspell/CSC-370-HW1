@@ -9,6 +9,12 @@ __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 def h1(Board b):
 	"""
 	Heuristic function: returns number of misplaced tiles.
+	
+	Parameters:
+		Board to analyze.
+		
+	Returns:
+		# of misplaced tiles.
 	"""
 	
 	misplaced = 0;
@@ -23,6 +29,12 @@ def h1(Board b):
 def h2(Board b):
 	"""
 	Heuristic function: returns sum of distances from goal positions.
+	
+	Parameters:
+		Board to analyze.
+		
+	Returns:
+		# of misplaced tiles.
 	"""
 	
 	distance = 0;
