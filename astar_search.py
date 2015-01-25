@@ -6,7 +6,7 @@ __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
 
-def h1(Board b):
+def h1(b):
 	"""
 	Heuristic function: returns number of misplaced tiles.
 	
@@ -26,7 +26,7 @@ def h1(Board b):
 	
 	return misplaced
 
-def h2(Board b):
+def h2(b):
 	"""
 	Heuristic function: returns sum of distances from goal positions.
 	
