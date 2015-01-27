@@ -12,18 +12,18 @@ def main():
 
 	goal = board.Board()
 	print goal
-	print astar_search.h1(goal)
-	print astar_search.h2(goal)
+	print astar_search.a_star(goal, 1)
+	print astar_search.a_star(goal, 2)
 	
 	goal.swap_right()
 	print goal
-	print astar_search.h1(goal)
-	print astar_search.h2(goal)
+	print astar_search.a_star(goal, 1)
+	print astar_search.a_star(goal, 2)
 
 	goal.swap_down()
 	print goal
-	print astar_search.h1(goal)
-	print astar_search.h2(goal)
+	print astar_search.a_star(goal, 1)
+	print astar_search.a_star(goal, 2)
 
 if __name__ == "__main__":
 	main()

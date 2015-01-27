@@ -2,6 +2,8 @@
 
 import Queue
 
+import numpy
+
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
@@ -14,11 +16,14 @@ def a_star(b, fcn):
         fcn - integer - which heuristic to use
     
     Returns:
-        2-tuple: (cost, effective branching factor)
+        3-tuple: (cost, depth, effective branching factor)
     """
     
-    open_set = Queue.PriorityQueue() # set of tuples: (f(n), g(n), h(n), Board)
-    closed_set = [] # set of nodes already expanded
+    # Set of tuples: (f(n), g(n), h(n), Board).
+    open_set = Queue.PriorityQueue()
+
+    # Set of nodes already expanded.
+    closed_set = []
     
     h = None
     if fcn == 1: h = h1(b)
@@ -34,18 +39,17 @@ def a_star(b, fcn):
     while not done:
         
         node = open_set.get()
-        closed_set.put(node)
+        closed_set.append(node)
         
+        # Heuristic is 0, goal state found.
         if node[2] == 0:
-            
-            # heuristic == 0
             done = True
             depth = node[1]
             
         else:
             
             g = node[1] + 1
-            front = n.moves()
+            front = node[3].moves()
             
             for n in front:
                 
@@ -57,10 +61,10 @@ def a_star(b, fcn):
                     
                     open_set.put((g+h, g, h, n))
     
-    cost = len(closed_set) # + len(open_set) [do we need this?]
-    ebf = None # we need to figure out how to actually calculate this
+    cost = len(closed_set) + open_set.qsize()
+    ebf = branch_factor(cost, depth)
     
-    return (cost, ebf)
+    return (cost, depth, ebf)
     
 
 def h1(b):
@@ -117,3 +121,33 @@ def h3(b):
 	Returns:
 		int - 
 	"""
+
+	pass
+
+def branch_factor(cost, depth):
+	"""
+	Calculates the effective branching factor (b*).
+	
+	Parameters:
+		cost - int - number of nodes expanded
+		depth - int - depth of search
+		
+	Returns:
+		float - effective branching factor, rounded to 2 places after the decimal
+	"""
+
+	# Create an array of coefficients for a polynomial equation.
+	coeffs = []
+
+	for i in range(depth):
+		coeffs.append(1)
+
+	coeffs.append( -1 * cost)
+
+	# Solve for the roots of the equation.
+	roots = numpy.roots(coeffs)
+
+	# Choose the valid root and return it, rounded to 
+	for comp in roots:
+		if comp.imag == 0.0:
+			return round(comp.real, 2)
