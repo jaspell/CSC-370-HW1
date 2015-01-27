@@ -1,25 +1,66 @@
 """A* search algorithm for HW 1 (8-puzzle A* search)."""
 
+import Queue
+
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
-def a_star(b):
+def a_star(b, fcn):
     """
     Runs A* algorithm to find optimal path from current to goal state.
     
     Parameters:
         b - Board - starting board state
+        fcn - integer - which heuristic to use
     
     Returns:
-        2-tuple containing two 3-tuples:
-            ((h1 nodes generated, h2 nodes generated, h3 nodes generated),
-             (h1 effective branching factor, h2 effective branching factor,
-              h3 effective branching factor))
+        2-tuple: (cost, effective branching factor)
     """
     
-    open_set = [b] #priority queue of Boards
-    closed_set = [] #
+    open_set = Queue.PriorityQueue() # set of tuples: (f(n), g(n), h(n), Board)
+    closed_set = [] # set of nodes already expanded
     
+    h = None
+    if fcn == 1: h = h1(b)
+    elif fcn == 2: h = h2(b)
+    else: h = h3(b)
+    
+    open_set.put((h, 0, h, b))
+    
+    depth = None
+    
+    done = False
+    
+    while not done:
+        
+        node = open_set.get()
+        closed_set.put(node)
+        
+        if node[2] == 0:
+            
+            # heuristic == 0
+            done = True
+            depth = node[1]
+            
+        else:
+            
+            g = node[1] + 1
+            front = n.moves()
+            
+            for n in front:
+                
+                if n not in closed_set:
+                    
+                    if fcn == 1: h = h1(n)
+                    elif fcn == 2: h = h2(n)
+                    else: h = h3(n)
+                    
+                    open_set.put((g+h, g, h, n))
+    
+    cost = len(closed_set) # + len(open_set) [do we need this?]
+    ebf = None # we need to figure out how to actually calculate this
+    
+    return (cost, ebf)
     
 
 def h1(b):
