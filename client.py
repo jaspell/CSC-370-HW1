@@ -19,10 +19,19 @@ def main():
     table1 = []
     table2 = []
     #table3 = []
+    
     for i in range(0, 12):
-        table1.append(deque(maxlen = 100))
-        table2.append(deque(maxlen = 100))
-        #table3.append(deque(maxlen = 100))
+        
+        """
+        max out deque lengths at 2^d, since there will be no more than
+        this many boards with optimal solutions of a given depth.
+        """
+        d = 2 * i + 2
+        m = 100
+        if 2 ** d < 100: m = 2 ** d
+        table1.append(deque(maxlen = m))
+        table2.append(deque(maxlen = m))
+        #table3.append(deque(maxlen = m))
     
     while table_open(table1):
         
@@ -60,9 +69,9 @@ def main():
     
 def table_open(table):
     
-    for d in table:
+    for i in range(0, 12):
         
-        if len(d) < 100:
+        if len(table[i]) < 2 ** (2 * i + 2):
             
             return True
         
