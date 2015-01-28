@@ -47,6 +47,15 @@ def main():
     
     #insert code for printing table results
     
+    results1 = []
+    results2 = []
+    #results3 = []
+    
+    while table1:
+        
+        deq = table1.pop()
+        table1.append(deq.pop())
+        #finish later
     
 	print goal
 	print astar_search.a_star(goal, 1)
@@ -64,9 +73,9 @@ def main():
     
 def table_open(table, m):
     
-    for d in table:
+    for deq in table:
         
-        if len(d) < m:
+        if len(deq) < m:
             
             return True
         
