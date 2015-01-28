@@ -4,13 +4,46 @@
 
 import board
 import astar_search
+import random
+from collections import deque
 
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
 def main():
-
-	goal = board.Board()
+    
+    random.seed()
+    
+	b = board.Board()
+    
+    table1 = []
+    table2 = []
+    #table3 = []
+    for i in range(0, 12):
+        table1.append(deque(maxlen = 100))
+        table2.append(deque(maxlen = 100))
+        #table3.append(deque(maxlen = 100))
+    
+    while table_open(table1):
+        
+        scramble(b)
+        
+        search1 = astar_search.a_star(b, 1)
+        d = search[1]
+        i = d / 2 - 1
+    
+        if d % 2 == 0 and d > 0 and d < 25 and len(table1[i]) < 100:
+            
+            search2 = astar_search.a_star(b, 2)
+            #search3 = astar_search.a_star(b, 3)
+            
+            table1[i].append(search1)
+            table2[i].append(search2)
+            #table3[i].append(search3)
+    
+    #insert code for printing table results
+    
+    
 	print goal
 	print astar_search.a_star(goal, 1)
 	print astar_search.a_star(goal, 2)
@@ -24,6 +57,27 @@ def main():
 	print goal
 	print astar_search.a_star(goal, 1)
 	print astar_search.a_star(goal, 2)
+    
+def table_open(table):
+    
+    for d in table:
+        
+        if len(d) < 100:
+            
+            return True
+        
+    return False
+    
+def scramble(b):
+    
+    for i in range(0, 50):
+        
+        r = random.randint(1, 4)
+        
+        if r == 1: b.swap_up()
+        elif r == 2: b.swap_down()
+        elif r == 3: b.swap_left()
+        else b.swap_right()
 
 if __name__ == "__main__":
 	main()
