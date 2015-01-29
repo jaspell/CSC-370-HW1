@@ -40,6 +40,8 @@ def a_star(b, fcn):
         
         node = open_set.get()
         closed_set.append(node)
+
+        #print node[3]
         
         # Heuristic is 0, goal state found.
         if node[2] == 0:
@@ -62,9 +64,8 @@ def a_star(b, fcn):
                     open_set.put((g+h, g, h, n))
     
     cost = len(closed_set) + open_set.qsize()
-    ebf = branch_factor(cost, depth)
     
-    return (cost, depth, ebf)
+    return (cost, depth, branch_factor(cost, depth))
     
 
 def h1(b):

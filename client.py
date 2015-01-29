@@ -15,8 +15,6 @@ def main():
 	
 	random.seed()
 	
-	b = board.Board()
-	
 	table1 = []
 	table2 = []
 	#table3 = []
@@ -28,13 +26,20 @@ def main():
 		table1.append(deque(maxlen = m))
 		table2.append(deque(maxlen = m))
 		#table3.append(deque(maxlen = m))
-	
+
 	while table_open(table1, m):
-		
+
+		b = board.Board()
+
 		scramble(b)
+
+		print b
 		
 		search1 = astar_search.a_star(b, 1)
-		d = search[1]
+
+		print "Result: " + str(search1)
+
+		d = search1[1]
 		i = d / 2 - 1
 	
 		if d % 2 == 0 and d > 0 and d < 25 and len(table1[i]) < m:
@@ -48,29 +53,44 @@ def main():
 	
 	#insert code for printing table results
 	
+	# Results will store cost and ebf as a tuple at same index as tables.
 	results1 = []
 	results2 = []
 	#results3 = []
 	
-	while table1:
-		
-		deq = table1.pop()
-		table1.append(deq.pop())
-		#finish later
-	
-	print goal
-	print astar_search.a_star(goal, 1)
-	print astar_search.a_star(goal, 2)
-	
-	goal.swap_right()
-	print goal
-	print astar_search.a_star(goal, 1)
-	print astar_search.a_star(goal, 2)
+	for deq in table1:
 
-	goal.swap_down()
-	print goal
-	print astar_search.a_star(goal, 1)
-	print astar_search.a_star(goal, 2)
+		cost = 0
+		ebf = 0
+
+		for run in deq:
+			cost += run[0]
+			ebf += run[2]
+
+		cost = cost / float(m)
+		ebf = ebf / float(m)
+
+		results1.append((round(cost), ebf))
+
+	for deq in table2:
+
+		cost = 0
+		ebf = 0
+
+		for run in deq:
+			cost += run[0]
+			ebf += run[2]
+
+		cost = cost / float(m)
+		ebf = ebf / float(m)
+
+		results2.append((round(cost), ebf))
+
+	for i in range(len(results1)):
+		print str(2*(i+1)) + "  " + str(results1[0]) + "  " + str(results1[1])
+
+	for i in range(len(results2)):
+		print str(2*(i+1)) + "  " + str(results2[0]) + "  " + str(results2[1])
 	
 def table_open(table, m):
 	
