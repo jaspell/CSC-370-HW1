@@ -47,8 +47,8 @@ def main():
 			search1 = astar_search.a_star(b, 1)
 			#search3 = astar_search.a_star(b, 3)
 
-			print "Result 1: " + str(search1)
-			print "Result 2: " + str(search2)
+			#print "Result 1: " + str(search1)
+			#print "Result 2: " + str(search2)
 			
 			table1[i].append(search1)
 			table2[i].append(search2)
@@ -106,8 +106,12 @@ def table_open(table, m):
 	return False
 	
 def scramble(b):
+
+	moves = random.randint(2, 100)
+
+	print moves
 	
-	for i in range(0, 50):
+	for i in range(0, moves):
 		
 		r = random.randint(1, 4)
 		
