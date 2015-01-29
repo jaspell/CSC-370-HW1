@@ -47,7 +47,9 @@ def main():
 			search1 = astar_search.a_star(b, 1)
 			#search3 = astar_search.a_star(b, 3)
 
-			#print "Result 1: " + str(search1)
+			print "Depth " + str(d) + ": " + str(len(table1[i]) + 1) + " / " + str(m)
+
+			#print "Result 1: " + str(search1) 
 			#print "Result 2: " + str(search2)
 			
 			table1[i].append(search1)
@@ -109,7 +111,7 @@ def scramble(b):
 
 	moves = random.randint(2, 100)
 
-	print moves
+	#print moves
 	
 	for i in range(0, moves):
 		
