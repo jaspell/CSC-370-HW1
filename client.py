@@ -2,10 +2,11 @@
 
 """Client code for HW 1 (8-puzzle A* search)."""
 
-import board
-import astar_search
 import random
 from collections import deque
+
+import board
+import astar_search
 
 __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
@@ -90,7 +91,7 @@ def scramble(b):
 		if r == 1: b.swap_up()
 		elif r == 2: b.swap_down()
 		elif r == 3: b.swap_left()
-		else b.swap_right()
+		else: b.swap_right()
 
 if __name__ == "__main__":
 	main()
