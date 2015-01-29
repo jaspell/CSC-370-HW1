@@ -235,3 +235,21 @@ class Board:
 		output += "+"	
 
 		return output	
+
+	def __cmp__(self, other):
+		"""
+		Compare self to other.
+
+		Parameters:
+			other - Board - board to compare to
+
+		Returns:
+			int - 0 if boards are identical, nonzero otherwise
+		"""
+
+		for i in range(len(self.board)):
+			for j in range(len(self.board[0])):
+				if self.board[i][j] != other.board[i][j]:
+					return 1
+
+		return 0

@@ -39,9 +39,9 @@ def a_star(b, fcn):
     while not done:
         
         node = open_set.get()
-        closed_set.append(node)
+        closed_set.append(node[3])
 
-        #print node[3]
+        #print len(closed_set)
         
         # Heuristic is 0, goal state found.
         if node[2] == 0:
@@ -151,4 +151,4 @@ def branch_factor(cost, depth):
 	# Choose the valid root and return it, rounded to 
 	for comp in roots:
 		if comp.imag == 0.0:
-			return round(comp.real, 2)
+			return -1.0*round(comp.real, 2)

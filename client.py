@@ -33,19 +33,22 @@ def main():
 
 		scramble(b)
 
-		print b
+		#print b
 		
-		search1 = astar_search.a_star(b, 1)
+		search2 = astar_search.a_star(b, 2)
 
-		print "Result: " + str(search1)
+		#print "Result: " + str(search2)
 
-		d = search1[1]
+		d = search2[1]
 		i = d / 2 - 1
 	
 		if d % 2 == 0 and d > 0 and d < 25 and len(table1[i]) < m:
 			
-			search2 = astar_search.a_star(b, 2)
+			search1 = astar_search.a_star(b, 1)
 			#search3 = astar_search.a_star(b, 3)
+
+			print "Result 1: " + str(search1)
+			print "Result 2: " + str(search2)
 			
 			table1[i].append(search1)
 			table2[i].append(search2)
