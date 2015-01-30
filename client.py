@@ -17,15 +17,15 @@ def main():
 	
 	table1 = []
 	table2 = []
-	#table3 = []
+	table3 = []
 	
-	m = 1
+	m = 100
 	
 	for i in range(0, 12):
 		
 		table1.append(deque(maxlen = m))
 		table2.append(deque(maxlen = m))
-		#table3.append(deque(maxlen = m))
+		table3.append(deque(maxlen = m))
 
 	while table_open(table1, m):
 
@@ -45,23 +45,24 @@ def main():
 		if d % 2 == 0 and d > 0 and d < 25 and len(table1[i]) < m:
 			
 			search1 = astar_search.a_star(b, 1)
-			#search3 = astar_search.a_star(b, 3)
+			search3 = astar_search.a_star(b, 3)
 
 			#print "Depth " + str(d) + ": " + str(len(table1[i]) + 1) + " / " + str(m)
 
 			print "Result 1: " + str(search1) 
 			print "Result 2: " + str(search2)
+			print "Result 3: " + str(search3)
 			
 			table1[i].append(search1)
 			table2[i].append(search2)
-			#table3[i].append(search3)
+			table3[i].append(search3)
 	
 	#insert code for printing table results
 	
 	# Results will store cost and ebf as a tuple at same index as tables.
 	results1 = []
 	results2 = []
-	#results3 = []
+	results3 = []
 	
 	for deq in table1:
 
@@ -90,12 +91,29 @@ def main():
 		ebf = ebf / float(m)
 
 		results2.append((round(cost), ebf))
+	
+	for deq in table3:
+
+		cost = 0
+		ebf = 0
+
+		for run in deq:
+			cost += run[0]
+			ebf += run[2]
+
+		cost = cost / float(m)
+		ebf = ebf / float(m)
+
+		results3.append((round(cost), ebf))
 
 	for i in range(len(results1)):
 		print str(2*(i+1)) + "  " + str(results1[0]) + "  " + str(results1[1])
 
 	for i in range(len(results2)):
 		print str(2*(i+1)) + "  " + str(results2[0]) + "  " + str(results2[1])
+	
+	for i in range(len(results3)):
+		print str(2*(i+1)) + "  " + str(results3[0]) + "  " + str(results3[1])
 	
 def table_open(table, m):
 	
