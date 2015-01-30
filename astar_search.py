@@ -23,7 +23,7 @@ def a_star(b, fcn):
     open_set = Queue.PriorityQueue()
 
     # Set of nodes already expanded.
-    closed_set = []
+    #closed_set = []
     
     h = None
     if fcn == 1: h = h1(b)
@@ -36,10 +36,14 @@ def a_star(b, fcn):
     
     done = False
     
+    #print "GOING IN"
+    
+    cost = 1
+    
     while not done:
         
         node = open_set.get()
-        closed_set.append(node[3])
+        #closed_set.append(node[3])
 
         #print len(closed_set)
         
@@ -51,19 +55,20 @@ def a_star(b, fcn):
         else:
             
             g = node[1] + 1
+            #print "g is " + str(g)
             front = node[3].moves()
             
             for n in front:
                 
-                if n not in closed_set:
+                cost += 1
                     
-                    if fcn == 1: h = h1(n)
-                    elif fcn == 2: h = h2(n)
-                    else: h = h3(n)
-                    
-                    open_set.put((g+h, g, h, n))
-    
-    cost = len(closed_set) + open_set.qsize()
+                if fcn == 1: h = h1(n)
+                elif fcn == 2: h = h2(n)
+                else: h = h3(n)
+                
+                open_set.put((g+h, g, h, n))
+            
+            #print "got here!"
     
     return (cost, depth, branch_factor(cost, depth))
     
