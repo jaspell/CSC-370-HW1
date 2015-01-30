@@ -253,3 +253,16 @@ class Board:
 					return 1
 
 		return 0
+
+	def __hash__(self):
+		"""
+		Return the hash for the board.
+
+		Parameters:
+			none
+
+		Returns:
+			int - hash
+		"""
+
+		return (tuple(self.board[0]), tuple(self.board[1]), tuple(self.board[2])).__hash__()
