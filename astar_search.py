@@ -126,29 +126,41 @@ def h3(b):
 		b - Board - board to analyze
 		
 	Returns:
-		int - 
+		int - Manhattan Distance (h2) + Linear Conflict (see 'Generating
+			Admissable Heuristics by Criticizing Solutions to Relaxed Models'
+			pg. 13-14)
 	"""
+
+	# print str(b)
 
 	lc_r = [0, 0, 0]
 	lc_c = [0, 0, 0]
 	
 	for i in range(0, 3):
+
+		# print "i: " + str(i)
 		
 		c = [0, 0, 0]
 		
 		for j in range(0, 3):
+
+			# print "j: " + str(j)
 			
 			if b.board[i][j] != 0:
 				
 				for x in range(0, j):
 					if b.board[i][x] != 0 and b.board[i][x] > b.board[i][j]:
-						c[i] += 1
+						c[j] += 1
 				
 				for x in range(j+1, 3):
 					if b.board[i][x] != 0 and b.board[i][x] < b.board[i][j]:
-						c[i] += 1
+						c[j] += 1
 		
+		# print "Done defining C " + str(c[0]) + " " + str(c[1]) + " " + str(c[2])
+
 		while c[0] != 0 or c[1] != 0 or c[2] != 0:
+
+			# print "C: " + str(c[0]) + " " + str(c[1]) + " " + str(c[2])
 			
 			k = 0
 			if c[1] > c[k]: k = 1
@@ -157,32 +169,40 @@ def h3(b):
 			c[k] = 0
 			
 			for x in range(0, k):
-				if b.board[i][x] != 0 and b.board[i][x] > b.board[i][k]:
+				if b.board[i][x] != 0 and b.board[i][x] > b.board[i][k] and c[x] > 0:
 					c[x] -= 1
 			
 			for x in range(k+1, 3):
-				if b.board[i][x] != 0 and b.board[i][x] < b.board[i][k]:
+				if b.board[i][x] != 0 and b.board[i][x] < b.board[i][k] and c[x] > 0:
 					c[x] -= 1
 			
 			lc_r[i] += 1
 	
 	for j in range(0, 3):
+
+		# print "j: " + str(j)
 		
 		c = [0, 0, 0]
 		
 		for i in range(0, 3):
+
+			# print "i: " + str(i)
 			
 			if b.board[i][j] != 0:
 				
 				for x in range(0, i):
 					if b.board[x][j] != 0 and b.board[x][j] > b.board[i][j]:
-						c[j] += 1
+						c[i] += 1
 				
 				for x in range(i+1, 3):
 					if b.board[x][j] != 0 and b.board[x][j] < b.board[i][j]:
-						c[j] += 1
+						c[i] += 1
 		
+		# print "Done defining C " + str(c[0]) + " " + str(c[1]) + " " + str(c[2])
+
 		while c[0] != 0 or c[1] != 0 or c[2] != 0:
+
+			# print "C: " + str(c[0]) + " " + str(c[1]) + " " + str(c[2])
 			
 			k = 0
 			if c[1] > c[k]: k = 1
@@ -191,11 +211,11 @@ def h3(b):
 			c[k] = 0
 			
 			for x in range(0, k):
-				if b.board[x][j] != 0 and b.board[x][j] > b.board[k][j]:
+				if b.board[x][j] != 0 and b.board[x][j] > b.board[k][j] and c[x] > 0:
 					c[x] -= 1
 			
 			for x in range(k+1, 3):
-				if b.board[x][j] != 0 and b.board[x][j] < b.board[k][j]:
+				if b.board[x][j] != 0 and b.board[x][j] < b.board[k][j] and c[x] > 0:
 					c[x] -= 1
 			
 			lc_c[j] += 1

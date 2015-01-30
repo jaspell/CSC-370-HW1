@@ -23,13 +23,13 @@ def main():
 	
 	table1 = []
 	table2 = []
-	# table3 = []
+	table3 = []
 	
 	for i in range(0, 12):
 		
 		table1.append(deque(maxlen = m))
 		table2.append(deque(maxlen = m))
-		# table3.append(deque(maxlen = m))
+		table3.append(deque(maxlen = m))
 
 	while table_open(table1, m):
 
@@ -49,7 +49,7 @@ def main():
 		if d % 2 == 0 and d > 0 and d < 25 and len(table1[i]) < m:
 			
 			search1 = astar_search.a_star(b, 1)
-			# search3 = astar_search.a_star(b, 3)
+			search3 = astar_search.a_star(b, 3)
 
 			print "Depth " + str(d) + ": " + str(len(table1[i]) + 1) + " / " + str(m)
 
@@ -59,13 +59,13 @@ def main():
 			
 			table1[i].append(search1)
 			table2[i].append(search2)
-			# table3[i].append(search3)
+			table3[i].append(search3)
 	
 	#insert code for printing table results
 	
 	results1 = []
 	results2 = []
-	# results3 = []
+	results3 = []
 
 	# Populate results tables at indexes matching tables, in the form 
 	# ((cost mean, cost 95%), (ebf, ebf 95%)).
@@ -95,18 +95,18 @@ def main():
 		results2.append(((round(cost_mean, 2), round(cost_conf, 2)), 
 						 (round(ebf_mean, 2), round(ebf_conf, 2))))
 
-	# for deq in table3:
-	# 	n, min_max, cost_mean, cost_var, skew, kurt = stats.describe([run[0] for run in deq])
-	# 	cost_std = numpy.sqrt(cost_var)
+	for deq in table3:
+	 	n, min_max, cost_mean, cost_var, skew, kurt = stats.describe([run[0] for run in deq])
+	 	cost_std = numpy.sqrt(cost_var)
 
-	# 	n, min_max, ebf_mean, ebf_var, skew, kurt = stats.describe([run[2] for run in deq])
-	# 	ebf_std = numpy.sqrt(ebf_var)
+	 	n, min_max, ebf_mean, ebf_var, skew, kurt = stats.describe([run[2] for run in deq])
+	 	ebf_std = numpy.sqrt(ebf_var)
 
-	# 	cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
-	# 	ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
+	 	cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
+	 	ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
 
-	# 	results3.append(((round(cost_mean, 2), round(cost_conf, 2)), 
-	# 					 (round(ebf_mean, 2), round(ebf_conf, 2))))
+	 	results3.append(((round(cost_mean, 2), round(cost_conf, 2)), 
+	 					 (round(ebf_mean, 2), round(ebf_conf, 2))))
 
 	for i in range(len(results1)):
 		print str(2*(i+1)) + "  " + str(results1[i][0]) + "  " + str(results1[i][1])
@@ -114,8 +114,8 @@ def main():
 	for i in range(len(results2)):
 		print str(2*(i+1)) + "  " + str(results2[i][0]) + "  " + str(results2[i][1])
 		
-	# for i in range(len(results3)):
-	# 	print str(2*(i+1)) + "  " + str(results3[i][0]) + "  " + str(results3[i][1])
+	for i in range(len(results3)):
+	 	print str(2*(i+1)) + "  " + str(results3[i][0]) + "  " + str(results3[i][1])
 	
 def table_open(table, m):
 	
