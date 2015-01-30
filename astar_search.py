@@ -8,70 +8,71 @@ __author__ = "Ben Wiley and Jackson Spell"
 __email__ = "bewiley@davidson.edu, jaspell@davidson.edu"
 
 def a_star(b, fcn):
-    """
-    Runs A* algorithm to find optimal path from current to goal state.
-    
-    Parameters:
-        b - Board - starting board state
-        fcn - integer - which heuristic to use
-    
-    Returns:
-        3-tuple: (cost, depth, effective branching factor)
-    """
-    
-    # Set of tuples: (f(n), g(n), h(n), Board).
-    open_set = Queue.PriorityQueue()
+	"""
+	Runs A* algorithm to find optimal path from current to goal state.
+	
+	Parameters:
+		b - Board - starting board state
+		fcn - integer - which heuristic to use
+	
+	Returns:
+		3-tuple: (cost, depth, effective branching factor)
+	"""
+	
+	# Set of tuples: (f(n), g(n), h(n), Board).
+	open_set = Queue.PriorityQueue()
 
-    # Set of nodes already expanded.
-    #closed_set = []
-    
-    h = None
-    if fcn == 1: h = h1(b)
-    elif fcn == 2: h = h2(b)
-    else: h = h3(b)
-    
-    open_set.put((h, 0, h, b))
-    
-    depth = None
-    
-    done = False
-    
-    #print "GOING IN"
-    
-    cost = 1
-    
-    while not done:
-        
-        node = open_set.get()
-        #closed_set.append(node[3])
+	# Set of nodes already expanded.
+	closed_set = set()
+	
+	h = None
+	if fcn == 1: h = h1(b)
+	elif fcn == 2: h = h2(b)
+	else: h = h3(b)
+	
+	open_set.put((h, 0, h, b))
+	
+	depth = None
+	
+	done = False
+	
+	#print "GOING IN"
+	
+	cost = 1
+	
+	while not done:
+		
+		node = open_set.get()
+		closed_set.add(node[3])
 
-        #print len(closed_set)
-        
-        # Heuristic is 0, goal state found.
-        if node[2] == 0:
-            done = True
-            depth = node[1]
-            
-        else:
-            
-            g = node[1] + 1
-            #print "g is " + str(g)
-            front = node[3].moves()
-            
-            for n in front:
-                
-                cost += 1
-                    
-                if fcn == 1: h = h1(n)
-                elif fcn == 2: h = h2(n)
-                else: h = h3(n)
-                
-                open_set.put((g+h, g, h, n))
-            
-            #print "got here!"
-    
-    return (cost, depth, branch_factor(cost, depth))
-    
+		#print len(closed_set)
+		
+		# Heuristic is 0, goal state found.
+		if node[2] == 0:
+			done = True
+			depth = node[1]
+			
+		else:
+			
+			g = node[1] + 1
+			#print "g is " + str(g)
+			front = node[3].moves()
+			
+			for n in front:
+				
+				if n not in closed_set:
+					cost += 1
+					#if cost % 100 == 0:  print cost
+						
+					if fcn == 1: h = h1(n)
+					elif fcn == 2: h = h2(n)
+					else: h = h3(n)
+				
+					open_set.put((g+h, g, h, n))
+			
+			#print "got here!"
+	
+	return (cost, depth, branch_factor(cost, depth))
 
 def h1(b):
 	"""

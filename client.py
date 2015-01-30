@@ -19,7 +19,7 @@ def main():
 	table2 = []
 	#table3 = []
 	
-	m = 5
+	m = 1
 	
 	for i in range(0, 12):
 		
@@ -47,10 +47,10 @@ def main():
 			search1 = astar_search.a_star(b, 1)
 			#search3 = astar_search.a_star(b, 3)
 
-			print "Depth " + str(d) + ": " + str(len(table1[i]) + 1) + " / " + str(m)
+			#print "Depth " + str(d) + ": " + str(len(table1[i]) + 1) + " / " + str(m)
 
-			#print "Result 1: " + str(search1) 
-			#print "Result 2: " + str(search2)
+			print "Result 1: " + str(search1) 
+			print "Result 2: " + str(search2)
 			
 			table1[i].append(search1)
 			table2[i].append(search2)
