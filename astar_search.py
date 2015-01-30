@@ -128,7 +128,16 @@ def h3(b):
 		int - 
 	"""
 
-	pass
+	lc_r = [0, 0, 0]
+    lc_c = [0, 0, 0]
+    
+    for i in range(0, 3):
+        
+        c = [0, 0, 0]
+        
+        for j in range(0, 3):
+            
+            
 
 def branch_factor(cost, depth):
 	"""
