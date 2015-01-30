@@ -19,7 +19,7 @@ def main():
 	table2 = []
 	#table3 = []
 	
-	m = 100
+	m = 5
 	
 	for i in range(0, 12):
 		
