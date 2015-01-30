@@ -2,10 +2,17 @@
 \section{Experiments}
 \label{sec:expts}
 
-In this section, you should describe your experimental setup. What
-were the questions you were trying to answer? What was the
-experimental setup (number of trials, parameter settings, etc.)? What
-were you measuring? You should justify these choices when
-necessary. The accepted wisdom is that there should be enough detail
-in this section that I could reproduce your work \emph{exactly} if I
-were so motivated.
+The objective in this experiment is to investigate the difference in search cost and effective branching factor between the two heuristic functions.  We define the cost of the search to be the number of nodes generated -- in this case, the number of boards created by moving tiles.  The effective branching factor is calculated, for a solution of depth d and search cost of N, by 
+$$ N + 1 = 1 + b^* + b^{*2} + ... + (b^*)^d $$
+where $b^*$ is the effective branching factor.\\
+
+The heuristics are compared by averaging the search cost and effective branching factor for a given depth across 100 search operations, with the board randomly initialized each time.  Because half of the possible board configurations are unsolvable \cite{15notes}, we create the randomized board by starting in the goal configuration and making a number of random legal moves.  The number of moves is itself a random number between 2 and 100 in order to fully populate the state space.
+
+
+%In this section, you should describe your experimental setup. What
+%were the questions you were trying to answer? What was the
+%experimental setup (number of trials, parameter settings, etc.)? What
+%were you measuring? You should justify these choices when
+%necessary. The accepted wisdom is that there should be enough detail
+%in this section that I could reproduce your work \emph{exactly} if I
+%were so motivated.

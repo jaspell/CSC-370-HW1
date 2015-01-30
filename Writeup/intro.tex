@@ -4,15 +4,20 @@
 \section{Introduction}
 \label{sec:intro}
 
-In this section, you should introduce the reader to the problem you
-are attempting to solve. For example, for the first project: describe
-the $15$-puzzle, and why it's interesting as an A.I. problem. You
-should also cite and briefly describe other related papers that have
-tackled this problem in the past --- things that came up during the
-course of your research. In the AAAI style, citations look like
-\cite{aima} (see the comments in the source file \texttt{intro.tex} to
-see how this citation was produced). Conclude by summarizing how the
-remainder of the paper is organized. \\
+The 8-puzzle is one of a number of relatively simple problems, known as toy problems, which arise from logic tasks and are used to illustrate algorithm behavior, but do not describe real-world problems. The sliding-block family of puzzles are difficult to solve, with large state spaces, but have easily established representations and heuristics and have been historically used to evaluate search algorithms \cite{intractable}. \\
+
+The 8$\times$8 puzzle has 181,400 reachable states \cite{aima}.  Previous analyses exploring larger puzzles have shown that solving the N$\times$N puzzle is NP-hard and thus computationally intractable \cite{intractable}. \\
+
+In this paper, we describe the heuristics used by the A* algorithm, detail our experimental approach, including our random board generation method, and then present the results of the comparison in heuristics.
+%In this section, you should introduce the reader to the problem you
+%are attempting to solve. For example, for the first project: describe
+%the $15$-puzzle, and why it's interesting as an A.I. problem. You
+%should also cite and briefly describe other related papers that have
+%tackled this problem in the past --- things that came up during the
+%course of your research. In the AAAI style, citations look like
+%\cite{aima} (see the comments in the source file \texttt{intro.tex} to
+%see how this citation was produced). Conclude by summarizing how the
+%remainder of the paper is organized. \\
 
 % Citations: As you can see above, you create a citation by using the
 % \cite{} command. Inside the braces, you provide a "key" that is
@@ -25,6 +30,7 @@ remainder of the paper is organized. \\
 % in LaTeX. To break a line, you need to end it with \\. To begin a 
 % new paragraph, end a line with \\, leave a blank
 % line, and then start the next line (like in this example).
-Overall, the aim in this section is context-setting: what is the
-big-picture surrounding the problem you are tackling here?
+
+%Overall, the aim in this section is context-setting: what is the
+%big-picture surrounding the problem you are tackling here?
 

@@ -1,0 +1,16 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Ratner and Warmuth}{1986}]{intractable}
+Ratner, D., and Warmuth, M.~K.
+\newblock 1986.
+\newblock Finding a shortest solution for the n$\times$ n extension of the
+  15-puzzle is intractable.
+\newblock In {\em AAAI},  168--172.
+
+\bibitem[\protect\citeauthoryear{Russell and Norvig}{2003}]{aima}
+Russell, S.~J., and Norvig, P.
+\newblock 2003.
+\newblock {\em {Artificial Intelligence: A Modern Approach}}.
+\newblock Pearson Education.
+
+\end{thebibliography}
