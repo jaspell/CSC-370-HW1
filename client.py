@@ -79,7 +79,7 @@ def main():
 		cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
 		ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
 
-		results1.append(((round(cost_mean, 2), round(cost_conf, 2)), 
+		results1.append(((round(cost_mean), round(cost_conf, 2)), 
 						 (round(ebf_mean, 2), round(ebf_conf, 2))))
 	
 	for deq in table2:
@@ -92,7 +92,7 @@ def main():
 		cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
 		ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
 
-		results2.append(((round(cost_mean, 2), round(cost_conf, 2)), 
+		results2.append(((round(cost_mean), round(cost_conf, 2)), 
 						 (round(ebf_mean, 2), round(ebf_conf, 2))))
 
 	# for deq in table3:
@@ -105,7 +105,7 @@ def main():
 	# 	cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
 	# 	ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
 
-	# 	results3.append(((round(cost_mean, 2), round(cost_conf, 2)), 
+	# 	results3.append(((round(cost_mean), round(cost_conf, 2)), 
 	# 					 (round(ebf_mean, 2), round(ebf_conf, 2))))
 
 	for i in range(len(results1)):
