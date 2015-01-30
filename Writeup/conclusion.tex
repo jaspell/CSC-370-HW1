@@ -2,7 +2,9 @@
 \section{Conclusions}
 \label{sec:concl}
 
-In this section, briefly summarize your paper --- what problem did you
-start out to study, and what did you find? What is the key result /
-take-away message? It's also traditional to suggest one or two avenues
-for further work, but this is optional.
+The 8-puzzle is a classic toy problem used to evaluate the performance of heuristic search algorithms.  We evaluate the performance of the local search algorithm A* using two different heuristics based on the number of nodes generated during the search and the algorithm's effective branching factor.  Compared to a heuristic evaluating simply the number of board tiles which are not in the final goal configuration, far better performance is seen from the heuristic which evaluates the distance of each component of the board from its location in the goal configuration, allowing the algorithm to evaluate marginal improvements to board state rather than the lower "resolution" of only detecting tiles in their final states.  This experiment highlights the vast improvement in search efficiency using heuristics which more closely approximate the move cost between states.
+
+%In this section, briefly summarize your paper --- what problem did you
+%start out to study, and what did you find? What is the key result /
+%take-away message? It's also traditional to suggest one or two avenues
+%for further work, but this is optional.
