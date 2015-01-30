@@ -129,15 +129,79 @@ def h3(b):
 	"""
 
 	lc_r = [0, 0, 0]
-    lc_c = [0, 0, 0]
-    
-    for i in range(0, 3):
-        
-        c = [0, 0, 0]
-        
-        for j in range(0, 3):
-            
-            
+	lc_c = [0, 0, 0]
+	
+	for i in range(0, 3):
+		
+		c = [0, 0, 0]
+		
+		for j in range(0, 3):
+			
+			if b.board[i][j] != 0:
+				
+				for x in range(0, j):
+					if b.board[i][x] != 0 and b.board[i][x] > b.board[i][j]:
+						c[i] += 1
+				
+				for x in range(j+1, 3):
+					if b.board[i][x] != 0 and b.board[i][x] < b.board[i][j]:
+						c[i] += 1
+		
+		while c[0] != 0 or c[1] != 0 or c[2] != 0:
+			
+			k = 0
+			if c[1] > c[k]: k = 1
+			if c[2] > c[k]: k = 2
+			
+			c[k] = 0
+			
+			for x in range(0, k):
+				if b.board[i][x] != 0 and b.board[i][x] > b.board[i][k]:
+					c[x] -= 1
+			
+			for x in range(k+1, 3):
+				if b.board[i][x] != 0 and b.board[i][x] < b.board[i][k]:
+					c[x] -= 1
+			
+			lc_r[i] += 1
+	
+	for j in range(0, 3):
+		
+		c = [0, 0, 0]
+		
+		for i in range(0, 3):
+			
+			if b.board[i][j] != 0:
+				
+				for x in range(0, i):
+					if b.board[x][j] != 0 and b.board[x][j] > b.board[i][j]:
+						c[j] += 1
+				
+				for x in range(i+1, 3):
+					if b.board[x][j] != 0 and b.board[x][j] < b.board[i][j]:
+						c[j] += 1
+		
+		while c[0] != 0 or c[1] != 0 or c[2] != 0:
+			
+			k = 0
+			if c[1] > c[k]: k = 1
+			if c[2] > c[k]: k = 2
+			
+			c[k] = 0
+			
+			for x in range(0, k):
+				if b.board[x][j] != 0 and b.board[x][j] > b.board[k][j]:
+					c[x] -= 1
+			
+			for x in range(k+1, 3):
+				if b.board[x][j] != 0 and b.board[x][j] < b.board[k][j]:
+					c[x] -= 1
+			
+			lc_c[j] += 1
+	
+	l_conflict = 2 * (lc_r[0] + lc_r[1] + lc_r[2] + lc_c[0] + lc_c[1] + lc_c[2])
+	
+	return h2(b) + l_conflict
 
 def branch_factor(cost, depth):
 	"""
