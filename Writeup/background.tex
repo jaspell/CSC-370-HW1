@@ -1,7 +1,5 @@
 
-\section{A* and Heuristics}
+\section{Heuristics}
 \label{sec:background}
 
-The implementation of A* used in this experiment is 
-
-We employ two commonly-used heuristics based on board state and tile positions relative to the goal \cite{aima}.  The first tallies the number of tiles out of place on the board, not including the empty space, and the second sums the taxicab distance from each of the tiles to its target position in the goal configuration -- the minimum number of moves needed to reach the target, ignoring the presence of other tiles.  Both heuristics are admissible, as more moves are required to move all tiles to the goal configuration than the value of either heuristic.  
+We employ two commonly-used heuristics based on board state and tile positions relative to the goal \cite{aima}.  The purpose of this experiment is to evaluate the difference in efficiency of A* search between the two heuristics.  The first heuristic tallies the number of tiles out of place on the board, not including the empty space, and the second sums the taxicab distance from each of the tiles to its target position in the goal configuration -- the minimum number of moves needed to reach the target, ignoring the presence of other tiles.  Both heuristics are admissible, as more moves are required to move all tiles to the goal configuration than the value of either heuristic.  
