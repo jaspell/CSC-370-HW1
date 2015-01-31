@@ -108,12 +108,15 @@ def main():
 		results3.append(((round(cost_mean, 2), round(cost_conf, 2)), 
 	 					 (round(ebf_mean, 2), round(ebf_conf, 2))))
 
+	print "Stats for Heuristic 1"
 	for i in range(len(results1)):
 		print str(2*(i+1)) + "  " + str(results1[i][0]) + "  " + str(results1[i][1])
 
+	print "Stats for Heuristic 2"
 	for i in range(len(results2)):
 		print str(2*(i+1)) + "  " + str(results2[i][0]) + "  " + str(results2[i][1])
 		
+	print "Stats for Heuristic 3"
 	for i in range(len(results3)):
 	 	print str(2*(i+1)) + "  " + str(results3[i][0]) + "  " + str(results3[i][1])
 	
