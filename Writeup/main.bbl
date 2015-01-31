@@ -6,6 +6,14 @@ Centurion.
 \newblock Example state of an 8-puzzle.
 \newblock \url{http://centurion2.com/AIHomework/AI120/ai120.php}.
 
+\bibitem[\protect\citeauthoryear{Hansson, Mayer, and
+  Yung}{1985}]{GeneratingAdmissableHeuristics}
+Hansson, O.; Mayer, A.~E.; and Yung, M.
+\newblock 1985.
+\newblock Generating admissible heuristics by criticizing solutions to relaxed
+  models.
+\newblock \url{http://academiccommons.columbia.edu/catalog/ac\%3A141289}.
+
 \bibitem[\protect\citeauthoryear{Johnson and Story}{1879}]{15notes}
 Johnson, W.~W., and Story, W.~E.
 \newblock 1879.

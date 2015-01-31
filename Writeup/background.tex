@@ -2,6 +2,35 @@
 \section{A* and Heuristics}
 \label{sec:background}
 
-We employ three heuristics based on board state and tile positions relative to the goal \cite{aima}.  The purpose of this experiment is to evaluate the difference in efficiency of A* search between the three heuristics.  The first heuristic tallies the number of tiles out of place on the board, not including the empty space, and the second sums the "Manhattan distance" from each of the tiles to its target position in the goal configuration -- the minimum number of moves needed to reach the target, ignoring the presence of other tiles.  The third, the Linear Conflict heuristic, adds together the result of the second heuristic with the board's total linear conflict -- the number of out-of-order tile conflicts in each of the board's rows and columns. \cite{GeneratingAdmissableHeuristics}  Each heuristics is consistent, as each evaluates the minimum number of moves necessary to shift the tiles, which is the lower bound for the actual number of moves, considering other tiles may obstruct the shift. \\
+We employ three heuristics based on board state and tile positions relative to the goal \cite{aima}.  The purpose of this experiment is to evaluate the difference in efficiency of A* search between the three heuristics.  The first heuristic tallies the number of tiles out of place on the board, not including the empty space, and the second sums the "Manhattan distance" from each of the tiles to its target position in the goal configuration -- the minimum number of moves needed to reach the target, ignoring the presence of other tiles.  The third, the Linear Conflict heuristic, adds together the result of the second heuristic with the board's total linear conflict -- the number of out-of-order tile conflicts in each of the board's rows and columns \cite{GeneratingAdmissableHeuristics}.  Each heuristic is consistent, as each evaluates the minimum number of moves necessary to shift the tiles, which is the lower bound for the actual number of moves, considering other tiles may obstruct the shift. 
 
-Because each heuristic is consistent, our A* implementation makes use of a set of previously discovered nodes, termed the \emph{closed set}.  A consistent heuristic will always reach a node using the optimal path, so once generated, nodes need not be reopened.  Due to the local nature of A*, though, the boards corresponding to nodes in the closed set may be recreated by the algorithm when exploring the frontier of possible moves from other board states.  Such boards do not pollute the search operation, however, as their presence in the closed set prevents the algorithm from reentering the priority queue.
+\begin{table*}[ht]
+  \centering
+  \begin{tabular}{|c|cc|cc|cc|}
+    \hline \hline % draws two horizontal lines at the top of the table
+    & \multicolumn{2}{c|}{h1} & \multicolumn{2}{c|}{h2} & \multicolumn{2}{c|}{h3} \\
+    & Search & Branching & Search & Branching & Search & Branching \\
+    Depth & Cost & Factor & Cost & Factor & Cost & Factor \\
+    \hline % line after the column headers
+    $2$ & $6\pm0.19$ & $2.95\pm0.04$ & $6\pm0.19$ & $2.95\pm0.04$ & $6\pm0.19$ & $2.95\pm0.04$ \\
+    $4$ & $10\pm0.23$ & $2.01\pm0.01$ & $10\pm0.13$ & $1.99\pm0.01$ & $10\pm0.13$ & $1.99\pm0.01$ \\
+    $6$ & $17\pm0.87$ & $1.73\pm0.01$ & $14\pm0.48$ & $1.69\pm0.01$ & $14\pm0.35$ & $1.68\pm0.01$ \\
+    $8$ & $32\pm1.76$ & $1.63\pm0.01$ & $22\pm1.06$ & $1.56\pm0.01$ & $20\pm0.99$ & $1.55\pm0.01$ \\
+    $10$ & $73\pm3.22$ & $1.61\pm0.01$ & $36\pm2.34$ & $1.50\pm0.01$ & $31\pm2.11$ & $1.48\pm0.01$ \\
+    $12$ & $170\pm6.17$ & $1.6\pm0.0$ & $59\pm4.9$ & $1.46\pm0.01$ & $54\pm5.66$ & $1.44\pm0.01$ \\
+    $14$ & $398\pm15.48$ & $1.59\pm0.0$ & $106\pm8.94$ & $1.44\pm0.01$ & $101\pm11.99$ & $1.43\pm0.01$ \\
+    $16$ & $984\pm40.17$ & $1.59\pm0.0$ & $209\pm18.95$ & $1.44\pm0.01$ & $196\pm28.03$ & $1.42\pm0.01$ \\
+    $18$ & $2365\pm121.84$ & $1.59\pm0.0$ & $400\pm37.96$ & $1.43\pm0.01$ & $308\pm44.55$ & $1.40\pm0.01$ \\
+    $20$ & $5093\pm387.1$ & $1.59\pm0.0$ & $727\pm78.31$ & $1.44\pm0.01$ & $505\pm52.59$ & $1.39\pm0.01$ \\
+    $22$ & $11412\pm1099.62$ & $1.59\pm0.0$ & $1344\pm154.37$ & $1.44\pm0.01$ & $876\pm128.65$ & $1.38\pm0.01$ \\
+    $24$ & $24521\pm2679.15$ & $1.58\pm0.0$ & $2410\pm327.77$ & $1.43\pm0.01$ & $1152\pm156.18$ & $1.36\pm0.01$ \\        
+
+    \hline \hline
+  \end{tabular}
+  
+  \caption{Experiment data.}
+  \label{tab:data}
+\end{table*}
+
+Because each heuristic is consistent, our A* implementation makes use of a set of previously discovered nodes, termed the \emph{closed set}.  A consistent heuristic will always reach a node using the optimal path, so once generated, nodes need not be reopened.  Due to the local nature of A*, though, the boards corresponding to nodes in the closed set may be recreated by the algorithm when exploring the frontier of possible moves from other board states.  Such boards do not pollute the search operation, however, as their presence in the closed set prevents the algorithm from reentering the node into the priority queue.
+

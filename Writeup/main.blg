@@ -1,53 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: aaai.bst
 Database file #1: project1.bib
-Illegal end of database file---line 59 of file project1.bib
- : 
- : 
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--empty publisher in 15notes
-You've used 4 entries,
+You've used 5 entries,
             2568 wiz_defined-function locations,
-            594 strings with 5006 characters,
-and the built_in function-call counts, 1421 in all, are:
-= -- 145
-> -- 46
+            601 strings with 5311 characters,
+and the built_in function-call counts, 1769 in all, are:
+= -- 181
+> -- 64
 < -- 1
-+ -- 14
-- -- 14
-* -- 95
-:= -- 233
-add.period$ -- 19
-call.type$ -- 4
-change.case$ -- 21
-chr.to.int$ -- 4
-cite$ -- 5
-duplicate$ -- 63
-empty$ -- 115
-format.name$ -- 21
-if$ -- 300
++ -- 20
+- -- 20
+* -- 120
+:= -- 292
+add.period$ -- 24
+call.type$ -- 5
+change.case$ -- 28
+chr.to.int$ -- 5
+cite$ -- 6
+duplicate$ -- 73
+empty$ -- 139
+format.name$ -- 30
+if$ -- 371
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 5
-newline$ -- 26
-num.names$ -- 12
-pop$ -- 32
+newline$ -- 32
+num.names$ -- 15
+pop$ -- 42
 preamble$ -- 1
-purify$ -- 27
+purify$ -- 35
 quote$ -- 0
-skip$ -- 52
+skip$ -- 62
 stack$ -- 0
-substring$ -- 52
-swap$ -- 17
+substring$ -- 57
+swap$ -- 19
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
+type$ -- 32
 warning$ -- 1
-while$ -- 11
-width$ -- 6
-write$ -- 53
-(There was 1 error message)
+while$ -- 13
+width$ -- 8
+write$ -- 66
+(There was 1 warning)
