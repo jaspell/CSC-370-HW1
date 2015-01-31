@@ -4,45 +4,45 @@ The top-level auxiliary file: main.aux
 The style file: aaai.bst
 Database file #1: project1.bib
 Warning--empty publisher in 15notes
-You've used 3 entries,
+You've used 4 entries,
             2568 wiz_defined-function locations,
-            589 strings with 4900 characters,
-and the built_in function-call counts, 1150 in all, are:
-= -- 116
-> -- 39
+            594 strings with 5006 characters,
+and the built_in function-call counts, 1421 in all, are:
+= -- 145
+> -- 46
 < -- 1
-+ -- 12
-- -- 12
-* -- 81
-:= -- 188
-add.period$ -- 14
-call.type$ -- 3
-change.case$ -- 16
-chr.to.int$ -- 3
-cite$ -- 4
-duplicate$ -- 53
-empty$ -- 91
-format.name$ -- 18
-if$ -- 243
++ -- 14
+- -- 14
+* -- 95
+:= -- 233
+add.period$ -- 19
+call.type$ -- 4
+change.case$ -- 21
+chr.to.int$ -- 4
+cite$ -- 5
+duplicate$ -- 63
+empty$ -- 115
+format.name$ -- 21
+if$ -- 300
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 5
-newline$ -- 20
-num.names$ -- 9
-pop$ -- 24
+newline$ -- 26
+num.names$ -- 12
+pop$ -- 32
 preamble$ -- 1
-purify$ -- 21
+purify$ -- 27
 quote$ -- 0
-skip$ -- 41
+skip$ -- 52
 stack$ -- 0
-substring$ -- 47
-swap$ -- 15
+substring$ -- 52
+swap$ -- 17
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
+type$ -- 24
 warning$ -- 1
-while$ -- 9
-width$ -- 5
-write$ -- 40
+while$ -- 11
+width$ -- 6
+write$ -- 53
 (There was 1 warning)

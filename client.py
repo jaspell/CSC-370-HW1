@@ -76,8 +76,8 @@ def main():
 		n, min_max, ebf_mean, ebf_var, skew, kurt = stats.describe([run[2] for run in deq])
 		ebf_std = numpy.sqrt(ebf_var)
 
-		cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
-		ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
+		cost_conf = 1.96*cost_std/numpy.sqrt(m)
+		ebf_conf = 1.96*ebf_std/numpy.sqrt(m)
 
 		results1.append(((round(cost_mean), round(cost_conf, 2)), 
 						 (round(ebf_mean, 2), round(ebf_conf, 2))))
@@ -89,8 +89,8 @@ def main():
 		n, min_max, ebf_mean, ebf_var, skew, kurt = stats.describe([run[2] for run in deq])
 		ebf_std = numpy.sqrt(ebf_var)
 
-		cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
-		ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
+		cost_conf = 1.96*cost_std/numpy.sqrt(m)
+		ebf_conf = 1.96*ebf_std/numpy.sqrt(m)
 
 		results2.append(((round(cost_mean), round(cost_conf, 2)), 
 						 (round(ebf_mean, 2), round(ebf_conf, 2))))
@@ -102,8 +102,8 @@ def main():
 	 	n, min_max, ebf_mean, ebf_var, skew, kurt = stats.describe([run[2] for run in deq])
 	 	ebf_std = numpy.sqrt(ebf_var)
 
-	 	cost_conf = cost_mean - stats.norm.interval(confidence, loc=cost_mean, scale=cost_std)[0]
-	 	ebf_conf = ebf_mean - stats.norm.interval(confidence, loc=ebf_mean, scale=ebf_std)[0]
+		cost_conf = 1.96*cost_std/numpy.sqrt(m)
+		ebf_conf = 1.96*ebf_std/numpy.sqrt(m)
 
 		results3.append(((round(cost_mean, 2), round(cost_conf, 2)), 
 	 					 (round(ebf_mean, 2), round(ebf_conf, 2))))

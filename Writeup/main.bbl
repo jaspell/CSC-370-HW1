@@ -1,5 +1,11 @@
 \begin{thebibliography}{}
 
+\bibitem[\protect\citeauthoryear{Centurion}{2015}]{fig:puzzle}
+Centurion.
+\newblock 2015.
+\newblock Example state of an 8-puzzle.
+\newblock \url{http://centurion2.com/AIHomework/AI120/ai120.php}.
+
 \bibitem[\protect\citeauthoryear{Johnson and Story}{1879}]{15notes}
 Johnson, W.~W., and Story, W.~E.
 \newblock 1879.
