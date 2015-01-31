@@ -30,13 +30,13 @@
   \label{tab:data}
 \end{table*}
 
-The objective in this experiment is to investigate the difference in search cost and effective branching factor between the two heuristic functions.  We define the cost of the search to be the number of nodes generated -- in this case, the number of boards created by moving tiles, then processed through the priority queue.  The effective branching factor is calculated, for a solution of depth d and search cost of N, by 
+The objective in this experiment is to investigate the difference in search cost and effective branching factor between the three heuristic functions.  We define the cost of the search to be the number of nodes generated -- in this case, the number of boards created by moving tiles, then processed through the priority queue.  The effective branching factor is calculated, for a solution of depth d and search cost of N, by 
 $$ N + 1 = 1 + b^* + b^{*2} + ... + (b^*)^d $$
 where $b^*$ is the effective branching factor.  This polynomial equation is solved using a numerical solver. \\
 
 The heuristics are compared by averaging the search cost and effective branching factor for a given depth across 100 search operations, with the board randomly initialized each time.  It should be noted that, though the maximum solution depth for an 8-puzzle is 31 moves, we evaluate boards of solution depths 2 - 24, which is sufficient to resolve the difference in efficiency between heuristic functions.  Because half of the possible board configurations are unsolvable \cite{15notes}, we create the randomized board by starting in the goal configuration and making a number of random legal moves, thus ensuring the board never enters an unsolvable state.  The number of moves is itself a random number between 2 and 100 in order to fully populate the solution depth space. \\
 
-The possibility of cycles in the moves during the board randomization means that the actual solving depth is bounded on the upper side by the number of randomization moves.  The actual depth is found by solving the board with one heuristic.  The second heuristic runs only if 100 search operations of the depth have not already been completed; that is, the second heuristic runs only if more searches are needed at that depth in order to correctly average the algorithm's behavior. \\
+The possibility of cycles in the moves during the board randomization means that the actual solving depth is bounded on the upper side by the number of randomization moves.  The actual depth is found by solving the board with one heuristic (h3(n)).  The other heuristics runs only if 100 search operations of the found depth have not already been completed; that is, h1(n) and h2(n) run only if more searches are needed at that depth in order to correctly average the algorithm's behavior. \\
 
 %In this section, you should describe your experimental setup. What
 %were the questions you were trying to answer? What was the

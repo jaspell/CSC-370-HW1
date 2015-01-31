@@ -4,7 +4,7 @@
 
 The results of the experiment are reported in Table~\ref{tab:data} as the mean value with a $95\%$ confidence interval. \\
 
-The average search cost for the second heuristic, h2, is far lower than that of h1 for a given solution depth.  This behavior is expected, as h2 more accurately evaluates the distance of the board state from the goal configuration.  Unlike h1, h2 takes into account not only the fact that a tile is misplaced, but the minimum number of moves by which the tile has been separated from its goal location.  h2 therefore prioritizes proximity to the goal configuration, which is far more valuable during the solving of the puzzle, as shifting the final tiles into the goal configuration requires displacing adjacent tiles.
+The average search cost for the second heuristic, h2, is far lower than that of h1 for a given solution depth.  This behavior is expected, as h2 more accurately evaluates the distance of the board state from the goal configuration.  Unlike h1, h2 takes into account not only the fact that a tile is misplaced, but the minimum number of moves by which the tile has been separated from its goal location.  h2 therefore prioritizes proximity to the goal configuration, which is far more valuable during the solving of the puzzle, as shifting the final tiles into the goal configuration requires displacing adjacent tiles. h3, meanwhile, is considerably faster than h2, since it starts with h2's value and adds an additional component of linear conflict.
 
 %Present the results of your experiments. Simply presenting the data is
 %insufficient! You need to analyze your results. What did you discover?

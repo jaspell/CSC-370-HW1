@@ -103,7 +103,7 @@ def h2(b):
 		b - Board - board to analyze
 		
 	Returns:
-		int - sum of distances from goal positions
+		int - sum of distances from goal positions (Manhattan distance)
 	"""
 	
 	distance = 0
