@@ -2,7 +2,7 @@
 \section{Results}
 \label{sec:results}
 
-The results of the experiment are reported in~\ref{tab:results} as the mean value with a $95\%$ confidence interval, assuming the search cost and effective branching factor are normally distributed for a given depth. \\
+The results of the experiment are reported in Table~\ref{tab:data} as the mean value with a $95\%$ confidence interval. \\
 
 The average search cost for the second heuristic, h2, is far lower than that of h1 for a given solution depth.  This behavior is expected, as h2 more accurately evaluates the distance of the board state from the goal configuration.  Unlike h1, h2 takes into account not only the fact that a tile is misplaced, but the minimum number of moves by which the tile has been separated from its goal location.  h2 therefore prioritizes proximity to the goal configuration, which is far more valuable during the solving of the puzzle, as shifting the final tiles into the goal configuration requires displacing adjacent tiles.
 
@@ -61,28 +61,5 @@ The average search cost for the second heuristic, h2, is far lower than that of 
 
 %Again, refer to \texttt{results.tex} to learn how to create simple
 %tables (like table~\ref{tab:example}).
-%\begin{figure}[htb]
-%  \centering % centers the entire table
 
-  % The following line sets the parameters of the table: we'll have
-  % three columns (one per 'c'), each
-  % column will be centered (hence the 'c'; 'l' or 'r' will left or
-  % right justify the column) and the columns
-  % will have lines between them (that's the purpose of the |s between
-  % the 'c's).
-%  \begin{tabular}{|c|c|c|} 
-%    \hline \hline % draws two horizontal lines at the top of the table
-%    Column 1 & Column 2 & Column 3 \\ % separate column contents using the &
-%    \hline % line after the column headers
-%    $1$ & $3.1$ & $2.7$ \\
-%    $42$ & $-1$ & $1729$\\
-%    \hline \hline
-%  \end{tabular}
-
-  % As with figures, *every* table should have a descriptive caption
-  % and a label for ease of reference.
-%  \caption{An example table.}
-%  \label{tab:example}
-
-%\end{figure}
 
